@@ -1,0 +1,83 @@
+\documentclass[a4paper, 12pt, twppages]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{background.pdf}%
+\vfill
+}}}
+\fancyhf{}% Clear all headers/footers
+\renewcommand{\headrulewidth}{0pt}% No header rule
+\renewcommand{\footrulewidth}{0pt}% No footer rule
+\fancyfoot[L]{\hspace*{-16mm}\includegraphics[scale=0.3]{logoDepartment.pdf}}
+
+\begin{document}
+\includepdf[pages={1}]{scan-of-declaration-of-authorship.pdf}
+\pagebreak
+
+\AddToShipoutPicture*{\BackgroundPic}
+\thispagestyle{fancy}
+
+
+{\vspace{2cm}~}
+{\vspace{2cm}}
+
+{\noindent\large Project Paper}
+\vspace{1cm}
+
+{\noindent\huge\textbf{Using a Random Forest for Static Analysis of Android Malware}}
+
+\bigskip
+
+{\noindent\LARGE Group 2}
+
+
+\bigskip
+{\vspace{2cm}}
+{\noindent\large {\bf Supervisor:} Nils Löhndorf}
+
+\bigskip
+
+%% WRITE THE DATAE OF SUBMISSION
+{\noindent\large {\bf Date of Submission:} 26. January 2018}
+
+\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip
+
+{\em\noindent Department of Information Systems and Operations, Vienna University of
+Economics and Business, Welthandelsplatz 1, 1020 Vienna, Austria
+}
+
+
+\pagestyle{empty}
+\pagebreak
+\tableofcontents
+\pagebreak
+\listoffigures
+\pagebreak
+\listoftables
+\pagebreak
+
+
+\begin{abstract}
+We use \cite{drebin}
+\end{abstract}
+
+\pagebreak
+
+\input{paper.tex}
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
