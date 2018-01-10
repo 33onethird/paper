@@ -1,0 +1,34 @@
+\section{Related Work}
+
+The primary goal of this project was the reproduction of DREBIN, a
+virus scanner for android created in 2014.\footnote{\cite{drebin}}
+Its aim was to provide a lightweight method of detecting malware on
+the Android platform using machine learning. This goal was realized
+by an app, which analyzed and classified .apk files directly in the
+phone within ten seconds. \\
+The main contributions of the DREBIN projects were: 
+\begin{itemize}
+\item A highly effective detection of malware and consequently high true
+positive (94\%) and low false positive (1\%) rates. This was achieved
+via machine learning, avoiding manually crafted detection patterns. 
+\item The results are transparent and explainable, because of the chosen
+workflow. The classification provides an insight can be traced back
+to the raw data. 
+\item By applying linear time analysis, the classification process is very
+efficient and can be executed directly on the smartphone. Furthermore,
+the analysis of a large dataset may finish in a reasonable amount
+of time.
+\end{itemize}
+They achieve these goals by conducting a broad static analysis on
+the files of an application. Precisely, the manifest and disassembled
+dex code are used to extract certain feature sets. The entire process
+is based on strings and the feature files are also stored as such.
+Features extracted from the manifest are: Hardware components (e.g.
+camera, GPS), Requested permissions (e.g. SEND\_SMS), App components
+(e.g. component names) and Filtered intents (e.g. acting on BOOT\_COMPLETED).
+The disassembled code provides the following features: Restricted
+API calls (e.g. calling a method without permission), Used permission
+(e.g. permissions actually used in the code), Suspicious API calls
+(e.g. executing external commands via Runtime.exec() ) and Network
+addresses (e.g. URLS). 
+
