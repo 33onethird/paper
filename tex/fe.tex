@@ -1,0 +1,74 @@
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+
+\section{Feature Extraction}
+
+Clearly, analyzing every file manually does not scale very well. In
+order to detect malware automatically, the application files must
+be analyzed by a program. We are interested in information such as
+DNS names used for communication, potentially malicious method calls
+(e.g. sending premium SMS), usage of known malware libraries and similar
+behavior. Generally speaking, there are two fundamentally different
+approaches to this topic: Static and dynamic software analysis.\cite{staticdynamic}
+
+\subsection{Static Analysis}
+
+Using static analysis, the decompiled code of a program is inspected.
+The required information is extracted out of several thousand lines
+of code by using techniques, such as regular expressions or search
+lists. These methods require an understanding of the format and syntax
+of the analyzed code and the parsing program must be tailored to one
+specific use case. Therefore, the writing of the parsing program is
+preceded by a manual inspection of the target code, where the programmer
+defines the goals of the extraction. Finding correct and valid extraction
+patterns is essential for the static analysis. This project focuses
+on application of static analysis methods.\\
+A main advantage of this approach is the inspection of the entire
+code, instead of only executed code. The provided information does
+not change and can be inspected before the actual execution of the
+program. It is also possible to find the exact line of code, which
+is responsible for a certain behavior of an application. Therefore,
+the workflow can be reconstructed and offers potentially a deep understanding
+of the software.\\
+However, the static analysis approach also has its limitations. The
+most problematic one is the obfuscation of code. It is possible to
+hardcode an encrypted domain name in the software, which is decrypted
+if the program wants to communicate with this domain name. The static
+analysis program can only extract the encrypted name, which is most
+likely useless to the analyst. Another way of obfuscating code is
+downloading malicious programs in a seemingly benign application.
+Again, the static analysis cannot analyze the malicious program, because
+it is downloaded on runtime. Additionally, it is possible to generate
+false positive and false negative results, because of imprecise extraction
+patterns or wrong assumptions of the analyst. 
+
+\subsection{Dynamic Analysis }
+
+The usage of dynamic software analysis always involves some kind of
+sandbox for the software sample. By installing and running the software
+in a controlled environment, its behavior is logged and can be analyzed.
+This method allows a more practically oriented approach, because individual
+branches of code are target of inspection, instead of the entire decompiled
+code. It is also possible to see changes during runtime and observe
+every variable. \\
+The biggest advantage over the static analysis is certainly the possibility
+to observe the program during runtime. Therefore, obfuscation techniques,
+such as the encryption of domain names or the downloading of malicious
+code can be negated. It is also no longer necessary to manually inspect
+the decompiled application and write a program specifically tailored
+to a specific use case. There are several tools, which automatically
+analyze the program during runtime. These are universally applicable
+and require little to none tailoring.\\
+A drawback of this approach is the execution of individual software
+branches. Most likely, these branches depend on user input and it
+is not always possible to test an application with every thinkable
+combination of user input. Furthermore, it is possible for an application
+to detect, whether it is executed on a real system or just a sandbox
+and change its behavior accordingly. Therefore, the dynamic analysis
+may deem a program as benign, which changed its behavior during the
+analysis and generate false positive or negatives. It is also important
+to keep in mind that the tools used for the analysis may not detect
+every activity or generate false logfiles. 
+
+
