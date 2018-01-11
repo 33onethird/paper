@@ -7,24 +7,9 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 
-\newcommand\BackgroundPic{%
-\put(0,0){%
-\parbox[b][\paperheight]{\paperwidth}{%
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{background.pdf}%
-\vfill
-}}}
-\fancyhf{}% Clear all headers/footers
-\renewcommand{\headrulewidth}{0pt}% No header rule
-\renewcommand{\footrulewidth}{0pt}% No footer rule
-\fancyfoot[L]{\hspace*{-16mm}\includegraphics[scale=0.3]{logoDepartment.pdf}}
-
 \begin{document}
-\includepdf[pages={1}]{scan-of-declaration-of-authorship.pdf}
 \pagebreak
 
-\AddToShipoutPicture*{\BackgroundPic}
 \thispagestyle{fancy}
 
 

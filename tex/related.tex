@@ -1,7 +1,7 @@
 \section{Related Work}
 
 The primary goal of this project was the reproduction of DREBIN, a
-virus scanner for android created in 2014.\footnote{\cite{drebin}}
+virus scanner for android created in 2014 \cite{drebin}.
 Its aim was to provide a lightweight method of detecting malware on
 the Android platform using machine learning. This goal was realized
 by an app, which analyzed and classified .apk files directly in the
@@ -32,3 +32,4 @@ API calls (e.g. calling a method without permission), Used permission
 (e.g. executing external commands via Runtime.exec() ) and Network
 addresses (e.g. URLS). 
 
+For the classification a \emph{support vector machine} (SVM) \cite{cristianini2000introduction} with a linear kernel was used. This strikes a balance between feature detection and prediction speed. The SVM achieved a true positive rate of 94\% given a false positive rate of 1\%.
