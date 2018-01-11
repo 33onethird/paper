@@ -1,3 +1,64 @@
-\section{Case Study}
-\subsection{Experiment Setup}
-\subsection{Results}
+\section{Results}
+This section details the results of our project. The resulting implementations are located at https://github.com/33onethird. A demo web page can be accessed at http://svm-google.ai.wu.ac.at:8080/api/v1/submit. We use the best performing algorithm for the demo. We use scikit-learn \cite{scikit-learn} to implement the algorithms.
+
+\Cref{tab:resdreb} details the true positive rate and false positive rate of the Machine Learning algorithms we used in our analysis of the Drebin dataset. We trained the algorithms on $40,000$ samples of the Drebin dataset and evaluated it on another $10,000$ samples. Note that we neither exhaust the dataset nor perform an exhaustive search on the hyperparameter space due to limited resources. Nevertheless, we see a clear indication that the Random Forest algorithm yielded the best accuracy. See \Cref{tab:rfdrebin}, \Cref{tab:svmdrebin} and \Cref{tab:lrdrebin} to inspect the hyperparameters.
+\begin{table}[p]
+	\centering
+	\begin{tabular}{l r r}
+		Model & TPR in \% & FPR in \%\\
+		\hline
+		Random Forest & 95 & 0.6\\
+		SVM & 90 & 0.5\\
+		Logistic Regression & 84 & 0.6\\
+		Naive Bayes & 52 & 0.6\\
+		\hline
+	\end{tabular}
+	\caption{Results of various algorithms on the Drebin dataset}
+	\label{tab:resdreb}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabular}{l r}
+		Hyperparameter & Value \\
+		\hline
+		Number of estimators (trees) & $1,000$\\
+		Criterion & Gini coefficient\\
+		Class 0 (benignware) weight & $1$\\
+		Class 1 (malware) weight & $2$\\
+		\hline
+	\end{tabular}
+	\caption{Hyperparameters for the Random Forest used one the Drebin dataset}
+	\label{tab:rfdrebin}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabular}{l r}
+		Hyperparameter & Value \\
+		\hline
+		$C$ & $1.5$\\
+		Class 0 (benignware) weight & $1$\\
+		Class 1 (malware) weight & $2$\\
+		\hline
+	\end{tabular}
+	\caption{Hyperparameters for the SVM used one the Drebin dataset}
+	\label{tab:svmdrebin}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabular}{l r}
+		Hyperparameter & Value \\
+		\hline
+		dual & no\\
+		solver & saga\\
+		$C$ & $1$\\
+		Iterations & $10,000$\\
+		Class 0 (benignware) weight & $1$\\
+		Class 1 (malware) weight & $2$\\
+		\hline
+	\end{tabular}
+	\caption{Hyperparameters for the Logistic Regression used one the Drebin dataset}
+	\label{tab:lrdrebin}
+\end{table}
