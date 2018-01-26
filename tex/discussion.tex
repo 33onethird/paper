@@ -1,2 +1,34 @@
 \section{Discussion}
-text
+\subsection{Out of Scope}\label{out-of-scope}
+
+\paragraph{Dynamic Analysis}\label{dynamic-analysis}
+
+We did not work with dynamic analysis, because the performance on mobile
+devices would decrease massively. We work exclusively with static
+analysis
+
+\paragraph{Obfuscation}\label{obfuscation}
+
+If the malware is being obfuscated then the decompilation would face
+problems, because countering obfuscation requires a whole new project
+and was not further included in these methods
+
+\paragraph{Entropy/Randomness}\label{entropyrandomness}
+
+We tried to detect and measure randomness of strings inside the code,
+but it turned out, that most urls would appear random and this would
+sharply increase the false positive rate. This method would require a
+list of known bad urls.
+
+\paragraph{Semantic Analysis}\label{semantic-analysis}
+
+This type of analysis is used to approximate concepts through structures
+build from a large set of information. This is out of scope.
+
+\subsection{Namesake}\label{namesake}
+
+Our organization heavily revolves around the infamous
+\href{https://www.tu-braunschweig.de/Medien-DB/sec/pubs/2014-ndss.pdf}{DREBIN}
+paper, which shares the name with a beloved Leslie Nielsen character
+from the filmseries ``The Naked Gun''. The movie lives off of slapstick
+and puns, much like we do.
